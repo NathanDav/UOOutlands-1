@@ -18,6 +18,7 @@ Latest scripts I've published you might like:
 | ------------- | ------------- |
 | :mag:  | Vendor mall searcher! Yah! This is a fun one I just wrote. Saves time looking for those special items at big vendor malls. Enjoy and I do appreciate constructive feedback. [here](Utility/VendorMall.txt)
 | :snake:  | Just finished a poison training macro that uses Storage Shelves ~ at Skills/Poisoning_Shelf (55-120).txt
+| :ship: Pirate Scripts  | Made my pirate scripts free! I want everyone to enjoy the ocean as much as I do - get out there and come say hi! in the \Ships folder |
 
 ## Secret Scripts
 
@@ -28,7 +29,6 @@ I have several personal scripts available, you can now purchase from me, for 5 P
 | :shipit: Recall Farmer  | Need to level your aspect? Level pets? Whaaaaaat!!? Without touching your keyboard!? Yep I did it. 700 line monster script to recall you overworld and level your pets/aspect. Detects special loot, detects Pks, keeps pets healed, dumps loot, the list of features is insane! Audible sound on damage, and 60 second alarm reminder to look at screen (for GMs). Took me 3 weeks to perfect this. Yours for 10! Prev Coins (and refundable as is everything). PM me for more details. Video preview of script running available on request (PM me). Requires taming/archery. |
 | :moyai: Recall Miner  | Its back!! The insanely successful recall miner (this isnt just a single spot mining btw). I also send you a guide on how to mark spots. Made insane amounts of ingots for my friends and myself with this one.  Ran this myself or a week straight, next week I made a 120 Blacksmith and 120 Tinker. Sick ingots and near-PK proof to boot. I love this one. Watch it in action at https://www.youtube.com/watch?v=Ce5CWOk2Il0. You can view the script development log and notes [here](Gathering/UOO_Recall_Miner.txt). Folks who have bought it from me really appreciate it :) and seem to have zero issues while making lots of ingots! |
 | :evergreen_tree: Recall Lumberjack  | Hands down, the script I am *most* proud of and the one I have only shared with the closest friends. Everyone which has tried it had one word to describe it - 'amazing'. Given the semi-random layout of UOO trees, I wrote a special 'random' algorithm to match it. You can view the script development log and notes [here](Gathering/UOO_Recall_LumberJack.txt). Video https://www.youtube.com/watch?v=hr9wf8KUiYI  |
-| :ship: Pirate Scripts  | You get (3) of my pirate scripts which automate popular builds. These taunt, throw explodes, heal your crew, cure, drink heal pots, and so much more. Only shared with my close pirate buddies, who love them! I run 3 accounts on a ship all automated, I barely have to do anything but fire the cannons and move around! |
 | :moneybag: Vendor Scam | Check every item (drops, scrolls, bags, chests) on a vendor to see if somebody accidentally priced it at 999! Run at vendor malls ~ this is a fun one. I give this to you free if you buy any other scripts. It wasn't that hard to write and but I also don't want to just pass it out to everyone.|
 
 By purchasing a script from me, you get:
