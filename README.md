@@ -18,7 +18,7 @@ Latest scripts I've published you might like:
 | ------------- | ------------- |
 | :mag:  | Vendor mall searcher! Yah! This is a fun one I just wrote. Saves time looking for those special items at big vendor malls. Enjoy and I do appreciate constructive feedback. [here](Utility/VendorMall.txt)
 | :snake:  | Just finished a poison training macro that uses Storage Shelves ~ at Skills/Poisoning_Shelf (55-120).txt
-| :ship: Pirate Scripts  | Made my pirate scripts free! I want everyone to enjoy the ocean as much as I do - get out there and come say hi! in the \Ships folder |
+| :ship: | Made my pirate scripts free! I want everyone to enjoy the ocean as much as I do - get out there and come say hi! in the \Ships folder |
 
 ## Secret Scripts
 
