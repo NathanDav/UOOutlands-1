@@ -140,14 +140,6 @@ while hits > 0
     settimer 'whistle' 0
   endif
   //
-  // Proximity Detect
-  //
-  @getenemy 'murderer' 'enemy' 'humanoid' 
-  if @findobject 'enemy' and @inrange 'enemy' 25
-    playmacro 'Recall'
-    stop
-  endif
-  //
   // PK Detect
   //
   if @injournal "now tracking" 'system'
