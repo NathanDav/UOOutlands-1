@@ -142,7 +142,7 @@ while hits > 0
   //
   // Proximity Detect
   //
-  @getenemy 'murderer' 'innocent' 'enemy' 'criminal' 'gray' 'humanoid' 
+  @getenemy 'murderer' 'enemy' 'humanoid' 
   if @findobject 'enemy' and @inrange 'enemy' 25
     playmacro 'Recall'
     stop
