@@ -161,19 +161,21 @@ pushlist 'VendorTypes' 0x191
 @pushlist! 'ContainerTypes' 0xe80 // Lesser Paragon Chest
 @pushlist! 'ContainerTypes' 0xe79 // Pouch
 @pushlist! 'ContainerTypes' 0x9aa // Wooden Box
+@pushlist! 'ContainerTypes' 0xe40 // Metal Chest
+@pushlist! 'ContainerTypes' 0xe41 // Metal Chest
 @pushlist! 'ContainerTypes' 0xe42 // Wooden Chest
-@pushlist! 'ContainerTypes' 0xe40 // container
-@pushlist! 'ContainerTypes' 0xE3C // other types ...
-@pushlist! 'ContainerTypes' 0xE3D
-@pushlist! 'ContainerTypes' 0xE3E
-@pushlist! 'ContainerTypes' 0xE3F
+@pushlist! 'ContainerTypes' 0xe43 // Wooden Chest
+@pushlist! 'ContainerTypes' 0xE3C // Wood box
+@pushlist! 'ContainerTypes' 0xE3D // Wood box
+@pushlist! 'ContainerTypes' 0xE3E // Wood box
+@pushlist! 'ContainerTypes' 0xE3F // Wood box
 @pushlist! 'ContainerTypes' 0xE40
 @pushlist! 'ContainerTypes' 0xE41
 @pushlist! 'ContainerTypes' 0xE42
 @pushlist! 'ContainerTypes' 0xE43
-@pushlist! 'ContainerTypes' 0xE7C
-@pushlist! 'ContainerTypes' 0xE7D
-@pushlist! 'ContainerTypes' 0xE7E
+@pushlist! 'ContainerTypes' 0xE7C // Metal chest
+@pushlist! 'ContainerTypes' 0xE7D // Wooden box
+@pushlist! 'ContainerTypes' 0xE7E // Wood crate small
 @pushlist! 'ContainerTypes' 0xE7F
 @pushlist! 'ContainerTypes' 0x09AA
 @pushlist! 'ContainerTypes' 0x09AB
