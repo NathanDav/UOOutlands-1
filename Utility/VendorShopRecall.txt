@@ -43,10 +43,9 @@
 // 1) Setup a UOSteam vendor buy macro to buy 99 of each
 //    resource you want
 // 2) Buy a lot of regs (pearl, root, moss, nightshade)
-// 3) Fill pack to full + 1 stone.
-// 4) Mark shops where you want to buy
-// 5) Modify rune list (below) to match shop locations
-// 6) Run script
+// 3) Mark shops where you want to buy
+// 4) Modify rune list (below) to match shop locations
+// 5) Run script
 //
 // MONEY
 // =====
