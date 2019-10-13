@@ -63,18 +63,19 @@ while hits > 0
   //
   // Gump detect
   //
-  while gumpexists 'any'
+  while @gumpexists 'any'
     headmsg "answer gump"
     pause 2000
   endwhile
-
   //
   // Transfer to pack horse if found
   //
   if diffweight < 30
     if findalias 'Packy'
-      @movetype 0x19b9 'backpack' 'Packy'
-      pause 1000
+      while @findtype 0x19b9 'any' 'backpack'
+          @movetype 0x19b9 'backpack' 'Packy'
+          pause 1000
+      endwhile
     endif
   endif
   //
@@ -149,6 +150,7 @@ while hits > 0
       pause 100
     endif
   endfor
+
   //
   // Whistle
   //
@@ -160,7 +162,7 @@ while hits > 0
   //
   // Proximity Detect
   //
-  @getenemy 'murderer' 'innocent' 'enemy' 'criminal' 'gray' 'humanoid' 
+  @getenemy 'murderer' 'enemy' 'criminal' 'humanoid' 
   if @findobject 'enemy' and @inrange 'enemy' 25
     playmacro 'Recall'
     stop
