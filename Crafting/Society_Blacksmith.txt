@@ -1,0 +1,172 @@
+/////////////////////////////////////////////
+// UO Steam Society Macro for Blacksmithing
+// for Outlands
+// by Jewele
+//
+// Crafts a certain number of exceptional items
+// required for a society then stops, alerting
+// you when its done.
+//
+// This isn't fully AFK - its designed to be
+// monitored. So semi-afk :)
+//
+// How to use:
+// ===========
+// 1) Stock pack with smith hammers (10-20)
+// 2) Set crafting menu to metal you need
+// 3) Set recycle option to 'RECYCLE SINGLE ITEM'
+// 4) Craft 1 item you need for job (sets make last)
+// 5) Modify count (below)
+// 6) Add the graphic ID to the list (below)
+// 7) Modify the ingot color list code (below)
+// 8) Run script
+// 9) Wait for done alert
+//
+// If you mess up and have to restart script,
+// modify for remaining number of items, not
+// total society job count.
+//
+// Notes:
+// ======
+// We store the number you need to make in position
+// 0 in the 'count' list. Remmeber arrays are 0 based
+// so we just push an item each time it detects an
+// an exceptional. When the number of items in array
+// exceeds required items, done!
+//
+// Version 1.0
+// -----------
+// First release! yay!
+//
+// UOSTEAM COPY-PASTE BELOW THIS LINE
+/////////////////////////////////////////////
+@removelist 'ore'
+@createlist 'ore'
+@removelist 'count'
+@createlist 'count'
+@removelist 'graphicid'
+@createlist 'graphicid'
+@clearjournal
+
+// MODIFY START --------->
+//
+//
+// Add number of required items for job
+pushlist 'count' 155
+// Add ore color for job
+pushlist 'ore' 0       // iron
+// Add item graphic id for job
+pushlist 'graphicid' 0x1413
+//
+//
+// <---------- MODIFY END
+
+//
+// Open backpack
+//
+@useobject 'backpack'
+pause 1000
+msg "bank"
+pause 1000
+useskill 'hiding'
+
+//
+// Set alias
+//
+if not @findalias 'Box'
+  sysmsg "Select box or chest with materials"
+  promptalias 'Box'
+endif
+
+//
+// Move all ingots from pack to Box (reset)
+//
+while @findtype 0x1bf2 'any' 'backpack'
+  sysmsg "dumping"
+  moveitem  'found' 'Box'
+  pause 500
+endwhile
+
+//
+// Keep track of count
+//
+while list count < count[0]
+  //
+  // Check weight
+  //
+  if diffweight < 10
+    headmsg 'I am too heavy, please unload me' '88'
+    playsound 'uhoh.wav'
+    pause 5000
+    continue
+  endif
+  //
+  // Check or restock ingots
+  //
+  if @counttype 0x1bf2 ore[0] 'backpack' <  25
+    sysmsg "restocking"
+    useobject 'Box'
+    pause 1000
+    movetype 0x1bf2 'Box' 'backpack' 0 0 0 ore[0] 500
+    pause 1000
+  endif
+  //
+  // Verify ingots
+  //
+  if @counttype 0x1bf2 ore[0] 'backpack' <  25
+    playsound 'uhoh.wav'
+    headmsg 'I cannot restock ingots!' '88'
+    pause 5000
+    continue
+  endif
+  //
+  // Check smith hammers
+  //
+  if not @findtype 0x13e3 'any' 'backpack'
+    headmsg 'I have no smith hammers!' 66
+    playsound 'uhoh.wav'
+    pause 5000
+    continue
+  endif
+  //
+  // Use 3x = sometimes server doesnt respond
+  //
+  useobject 'found'
+  pause 100
+  useobject 'found'
+  pause 100
+  useobject 'found'
+  pause 100
+  //
+  // Craft last
+  //
+  sysmsg "craft"
+  waitforgump 0x38920abd 5000
+  replygump 0x38920abd 7
+  // craft response
+  waitforgump 0x38920abd 5000
+  // then dismiss
+  replygump 0x38920abd 0
+  // then wait for item
+  waitforgump 0x38920abd 10000
+  //
+  // Check quality
+  //
+  @clearjournal
+  while @findtype graphicid[0] 'any' 'backpack'
+    @clickobject 'found'
+    pause 500
+    if @injournal 'exceptional' 'system'
+      headmsg '*Exceptional*' 55
+      pushlist 'count' 'foo'
+    endif
+    @usetype 0x13e3
+    waitforgump 0x38920abd 15000
+    replygump 0x38920abd 3
+    waitfortarget 5000
+    target! 'found'
+    pause 1000
+  endwhile
+endwhile
+playsound 'cymbals.wav'
+headmsg "All done!" 55
