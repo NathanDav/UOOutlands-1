@@ -138,5 +138,18 @@ while not @injournal "completed a society job" 'System'
     pause 1000
   endwhile
 endwhile
+
+//
+// Burn off the extras if found
+//
+while @findtype graphicid[0] 'any' 'backpack'
+  @usetype 0x13e3
+  waitforgump 0x38920abd 15000
+  replygump 0x38920abd 3
+  waitfortarget 5000
+  target! 'found'
+  pause 1000
+endwhile
+
 playsound 'cymbals.wav'
 headmsg "All done!" 55
