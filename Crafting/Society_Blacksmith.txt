@@ -31,22 +31,16 @@
 @createlist 'ore'
 @removelist 'graphicid'
 @createlist 'graphicid'
-@clearjournal
-
 // MODIFY START --------->
 //
 //
-
 // Add ore color for job
 pushlist 'ore' 0       // iron
-
 // Add item graphic id for job item
-pushlist 'graphicid' 0x1413
-
+pushlist 'graphicid' 0x1416
 //
 //
 // <---------- MODIFY END
-
 //
 // Open backpack
 //
@@ -55,7 +49,6 @@ pause 1000
 msg "bank"
 pause 1000
 useskill 'hiding'
-
 //
 // Set alias
 //
@@ -63,7 +56,6 @@ if not @findalias 'Box'
   sysmsg "Select box or chest with materials"
   promptalias 'Box'
 endif
-
 //
 // Move all ingots from pack to Box (reset)
 //
@@ -72,7 +64,6 @@ while @findtype 0x1bf2 'any' 'backpack'
   moveitem  'found' 'Box'
   pause 500
 endwhile
-
 //
 // Loop until its done
 //
@@ -138,7 +129,6 @@ while not @injournal "completed a society job" 'System'
   //
   // Check quality
   //
-  @clearjournal
   while @findtype graphicid[0] 'any' 'backpack'
     @usetype 0x13e3
     waitforgump 0x38920abd 15000
