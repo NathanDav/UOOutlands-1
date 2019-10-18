@@ -16,23 +16,10 @@
 // 2) Set crafting menu to metal you need
 // 3) Set recycle option to 'RECYCLE SINGLE ITEM'
 // 4) Craft 1 item you need for job (sets make last)
-// 5) Modify count (below)
-// 6) Add the graphic ID to the list (below)
-// 7) Modify the ingot color list code (below)
-// 8) Run script
-// 9) Wait for done alert
-//
-// If you mess up and have to restart script,
-// modify for remaining number of items, not
-// total society job count.
-//
-// Notes:
-// ======
-// We store the number you need to make in position
-// 0 in the 'count' list. Remmeber arrays are 0 based
-// so we just push an item each time it detects an
-// an exceptional. When the number of items in array
-// exceeds required items, done!
+// 5) Add the graphic ID to the list (below)
+// 6) Modify the ingot color list code (below)
+// 7) Run script
+// 8) Wait for done alert
 //
 // Version 1.0
 // -----------
@@ -42,8 +29,6 @@
 /////////////////////////////////////////////
 @removelist 'ore'
 @createlist 'ore'
-@removelist 'count'
-@createlist 'count'
 @removelist 'graphicid'
 @createlist 'graphicid'
 @clearjournal
@@ -51,12 +36,13 @@
 // MODIFY START --------->
 //
 //
-// Add number of required items for job
-pushlist 'count' 155
+
 // Add ore color for job
 pushlist 'ore' 0       // iron
-// Add item graphic id for job
+
+// Add item graphic id for job item
 pushlist 'graphicid' 0x1413
+
 //
 //
 // <---------- MODIFY END
@@ -88,9 +74,10 @@ while @findtype 0x1bf2 'any' 'backpack'
 endwhile
 
 //
-// Keep track of count
+// Loop until its done
 //
-while list count < count[0]
+@clearjournal
+while not @injournal "completed a society job" 'System'
   //
   // Check weight
   //
@@ -140,7 +127,6 @@ while list count < count[0]
   //
   // Craft last
   //
-  sysmsg "craft"
   waitforgump 0x38920abd 5000
   replygump 0x38920abd 7
   // craft response
@@ -154,12 +140,6 @@ while list count < count[0]
   //
   @clearjournal
   while @findtype graphicid[0] 'any' 'backpack'
-    @clickobject 'found'
-    pause 500
-    if @injournal 'exceptional' 'system'
-      headmsg '*Exceptional*' 55
-      pushlist 'count' 'foo'
-    endif
     @usetype 0x13e3
     waitforgump 0x38920abd 15000
     replygump 0x38920abd 3
