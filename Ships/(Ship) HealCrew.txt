@@ -77,6 +77,34 @@ while not dead
         pause 100
     endif
     //
+    // wait for bandage finish
+    //
+    if @timerexists 'healing'
+      if timer 'healing' > 15000
+        @removetimer 'healing'
+      endif
+      if @injournal 'heal' 'system'
+        @removetimer 'healing'
+      endif
+      if @injournal 'cure' 'system'
+        @removetimer 'healing'
+      endif
+      if @injournal 'finish' 'system'
+        @removetimer 'healing'
+      endif
+    endif
+    //
+    // Do I need a bandage?
+    //
+    if not @timerexists 'healing'
+      if poisoned 'self' or diffhits > 10
+        @createtimer 'healing'
+        headmsg "(bandaging)" 67
+        bandageself
+        @clearjournal
+      endif
+    endif
+    //
     // Does crew need a bandage?
     //
     if not @timerexists 'healing'
