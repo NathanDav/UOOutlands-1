@@ -9,7 +9,7 @@
 // How to use?
 // -----------
 // 1) Buy a pack horse
-// 2) Buy 1 bottle and put on packy
+// 2) Buy 20 bottles and put on packy
 // 3) Run script
 //
 // Script not running?
@@ -26,11 +26,34 @@
 // --------
 // 1.0 - New.
 //
+// 1.1 - Updated stealing script for multiple bottles. Server
+//       added an item move cooldown after stealing so we
+//       try to move every bottle in your pack back to the 
+//       pony, 1 by 1. The ones that are on cooldown wont move
+//       but the others will move just fine.
+//
+//
+// NOTES:
+// ======
+// Why do stacks of bottles work?
+//
+// When you steal a stackable item, it stacks in your pack and if
+// there is already an item there on cooldown, the new stack has
+// the same cooldown as the ORIGINAL item stack.
+//
+// So its :
+// 1) Steal 5 bottles (20 second cooldown)
+// 2) Steal 5 bottles - they stack, 10 second cooldown on all bottles.
+// 3) Steal 5 bottles - they stack, 0 second cooldown
+// 4) Move all bottles back to Pony
+//
+// Pretty cool eh?
+//
 // UOSTEAM COPY-PASTE BELOW THIS LINE
 /////////////////////////////////////////////
 sysmsg "Stealing Script Trainer" 88
 @clearjournal
-sysmsg "Version 2.0" 88
+sysmsg "Version 1.1" 88
 @clearjournal
 @useobject 'backpack'
 pause 1000
@@ -47,16 +70,16 @@ while not dead
   waitfortarget 5000
   target! 'pony'
   pause 11500
-
   //
-  // Move back to Pony
+  // Move back to Pony but ignore ones
+  // that are on cooldown
   //
-  if counttype 0xf0e 'any' 'backpack' > 0
-    pause 20000
-    @movetype 0xf0e 'backpack' 'pony' 0 0 0 'any' 1
+  @clearignorelist
+  while findtype 0xf0e 'any' 'backpack'
+    moveitem  'found' 'pony'
+    @ignoreobject 'found'
     pause 1000
-  endif
-
+  endwhile
   //
   // skill check
   //
