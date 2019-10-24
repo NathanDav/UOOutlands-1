@@ -85,7 +85,6 @@ while hits > 0
     while @findtype 0x19b9 'any' 'backpack'
       useobject 'found'
       pause 1000
-      ignoreobject 'found'
     endwhile
   endif
   //
