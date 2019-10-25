@@ -21,6 +21,16 @@ Latest scripts I've published you might like:
 | :snake:  | Just finished a poison training macro that uses Storage Shelves ~ at Skills/Poisoning_Shelf (55-120).txt
 | :ship: | Made my pirate scripts free! I want everyone to enjoy the ocean as much as I do - get out there and come say hi! in the \Ships folder |
 
+## Project Canary
+
+Please join my discord server if you run semi-afk resource gathering. Get notifications from other players the GMs are checking people. 
+
+![Image description](Images/Tweety.jpg)
+
+### What is this?
+This is an early warning system, supported by players, to tell other players be extra careful when afking during resource gathering. There has been a huge crackdown recently on afk gatherers and a lot of my friends have been jailed. This isn't a method to "fight the system" or anger Luthius/Oywn. Its just a means to tell players - hey, be careful! they are checking. If you need to use the restroom or feed the dog - it might be a good time to stop those scripts!
+**https://discord.gg/gkWXch5**
+
 ## Secret Scripts
 
 I have several personal scripts available, you can now purchase from me, for 5 Prevalia donation coins (each). The charged cost represents the amount of time I have spent writing, testing, and perfecting them. The cost also covers helping you - these are much more complicated scripts (500+ lines) and *everyone* has questions about getting them going or customizing them to their needs.
