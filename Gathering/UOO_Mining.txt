@@ -24,17 +24,26 @@
 // Detects if you are moving while trying to mine
 // - Script yells at you to STOP
 //
+// Version 1.3
+// -----------
+// Transfers ingots to pony
+// To auto-smelt near forge, stand near one for 5 failed mining attempts
+//
+// Notes:
+// ------
+// It is not possible to detect the forge in world.
+// 
 /////////////////////////////////////////////
 sysmsg "UO Outlands Miner script" 88
-sysmsg "Version 1.2" 88
+sysmsg "Version 1.3" 88
 @useobject 'backpack'
 pause 1000
 //
 // Prompt for pack horse/llama
 //
-if not @findalias 'Packy'
+if not @findalias 'packy'
   sysmsg "Pack animals are optional"
-  promptalias 'Packy'
+  promptalias 'packy'
 endif
 //
 // Clear hands
@@ -51,47 +60,81 @@ createtimer 'whistle'
 //
 @unsetalias 'PickAxe'
 //
-// Create Messages list
+// Create messages list
 //
-@removelist 'Messages'
-@createlist 'Messages'
+@removelist 'messages'
+@createlist 'messages'
+//
+// Create attempts list
+//
+@removelist 'attempts'
+@createlist 'attempts'
 //
 // While alive
 //
 while hits > 0
   @clearjournal
+  @clearignorelist
   //
   // Gump detect
   //
-  while @gumpexists 'any'
+  while @ingump 'any' 'Click when complete'
     headmsg "answer gump"
     pause 2000
   endwhile
   //
   // Transfer to pack horse if found
   //
-  if diffweight < 30
-    if findalias 'Packy'
+  if diffweight < 50
+    if findalias 'packy'
+      @useobject 'backpack'
+      // ore
       while @findtype 0x19b9 'any' 'backpack'
-          @movetype 0x19b9 'backpack' 'Packy'
+          @movetype 0x19b9 'backpack' 'packy'
+          pause 1000
+      endwhile
+      // ingots
+      while @findtype 0x1bf2 'any' 'backpack'
+          @movetype 0x1bf2 'backpack' 'packy'
           pause 1000
       endwhile
     endif
   endif
   //
-  // Auto smelt if near forge
+  // Attempt to smelt
   //
-  if diffweight < 30
-    while @findtype 0x19b9 'any' 'backpack'
-      useobject 'found'
-      pause 1000
-    endwhile
+  if list 'attempts' > 4
+      @clearjournal
+      @useobject 'backpack'
+      // smelt pack
+      while @findtype 0x19b9 'any' 'backpack'
+          if @injournal 'you do not see' 'system'
+              break
+          endif
+          @useobject 'found'
+          pause 1000
+      endwhile
+      // smelt pony
+      @useobject 'packy'
+      while @findtype 0x19b9 'any' 'packy'
+          if @injournal 'you do not see' 'system'
+              break
+          endif
+          @useobject 'found'
+          pause 1000
+      endwhile
+      // transfer ingots
+      while @findtype 0x1bf2 'any' 'backpack'
+          @movetype 0x1bf2 'backpack' 'packy'
+          pause 1000
+      endwhile
+      @clearlist 'attempts'
   endif
   //
   // If still too heavy, need player help
   //
   while diffweight < 10
-    headmsg 'I am too heavy, please unload me' '23'
+    headmsg 'I am too heavy, please unload me or find a forge' '23'
     pause 2000
   endwhile
   //
@@ -140,6 +183,7 @@ while hits > 0
       break
     elseif @injournal "harvestable" "system"
       headmsg 'Find a new spot' '43'
+      @pushlist 'attempts' 'Failed to find ore'
       pause 1000
       break
     elseif not @findlayer 'self' 1
