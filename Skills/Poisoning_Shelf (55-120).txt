@@ -164,8 +164,12 @@ while not dead
     // clear
     replygump 0xc0b1026d 16
     waitforgump 0xc0b1026d 5000
+    replygump 0xc0b1026d 16
+    waitforgump 0xc0b1026d 5000
+    // need to do action twice now
     // edit loadout
-    replygump 0xc0b1026d 3
+    replygump 0xc0b1026d 5
+    //line above was a 3
     waitforgump 0xc0b1026d 5000
     // cures (10)
     replygump 0xc0b1026d 201
